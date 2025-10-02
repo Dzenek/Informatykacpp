@@ -8,11 +8,11 @@ int main() {
     int liczba_parzysta = 1;
 
     while (n > 0) {
-        int cyfra = n % 10;
-        if (cyfra % 2 != 0) {
+        int cyfra = n % 10;      
+        if (cyfra % 2 != 0) {  
             liczba_parzysta = 0;
         }
-        n = n / 10;
+        n = n / 10; 
     }
 
     if (liczba_parzysta == 1) {

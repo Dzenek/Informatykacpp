@@ -2,13 +2,14 @@
 using namespace std;
 
 int main() {
-    int poprzednia, obecna;
-    int rosnacy = 1;
+    int poprzednia;
+    int obecna;
+    int rosnacy = 1; //1 = jest rosnacy 0 = nie jest rosnacy
 
-    cin >> poprzednia;
+    cin >> poprzednia; 
     for (int i = 1; i < 5; i++) {
         cin >> obecna;
-        if (obecna <= poprzednia) {
+        if (obecna <= poprzednia) {   //12 13 14 15 16
             rosnacy = 0;
         }
         poprzednia = obecna;
