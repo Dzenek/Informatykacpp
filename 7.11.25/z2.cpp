@@ -1,0 +1,23 @@
+#include <iostream>
+#include <string>
+using namespace std;
+ 
+int main()
+{
+	int i, prze=0, suma, pod;
+	string a, b, c;
+	cout <<"1 liczba: "; cin>> a;
+	cout <<"2 liczba: "; cin>> b;
+	cout<<"podaj podstawe: "; cin>>pod;
+	while(a.size()<b.size()) a='0'+a;
+	while(b.size()<a.size()) b='0'+b;
+	for(i=a.size()-1;i>=0;i--)
+	{
+		suma=prze+a[i]-'0'+b[i]-'0';
+		c=char(suma%pod+'0')+c;
+		prze=suma/pod;
+	}
+	if(prze==1) c='1'+c;
+	cout<<"suma = "<<c;
+	return 0;
+}
