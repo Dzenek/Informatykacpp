@@ -1,0 +1,143 @@
+
+alg 1 czy liczba jest pierwxza
+int main() {
+
+    int n, d=2;
+    bool pierwsza;
+    cout<<"n = "; cin>>n;
+    if(n>1) pierwsza = true;
+    else pierwsza = false;
+    while (pierwsza && d*d<=n)
+        if (n%d==0) pierwsza = false;
+        else d++;
+    if (pierwsza) cout<<"Tak";
+    else cout<<"Nie";
+    return 0;
+}
+algorytm 2 czy liczba pierwsza
+int main() {
+
+    int n, d=2;
+    bool pierwsza;
+    cout<<"n = "; cin>>n;
+    if(n>2 && n%2==0) pierwsza = false;
+    else pierwsza = true;
+    while (pierwsza && d*d<=n)
+        if (n%d==0) pierwsza = false;
+        else d = d + 2;
+    if (pierwsza) cout<<"Tak";
+    else cout<<"Nie";
+    return 0;
+}
+czy liczba jest pierwsza
+alg 3
+
+
+int main() {
+
+    int n, d=5;
+    bool pierwsza;
+    cout<<"n = "; cin>>n;
+    pierwsza=(n>1);
+    if (n>2 && n%2==0) pierwsza = false;
+    if (n>3 && n%3==0) pierwsza = false;
+    while (pierwsza && (d*d)<=n)
+        if (n%d==0) pierwsza = false;
+        else if (n%(d+2)==0) pierwsza = false;
+            else d=d+6;
+    if (pierwsza) cout<<"Tak";
+    else cout<<"Nie";
+    return 0;
+
+
+}
+bool pierwsz
+bool Pierwsza(int n) {
+
+    int  d=5;
+    bool p=(n>1);
+    if (n>2 && n%2==0) p = false;
+    if (n>3 && n%3==0) p = false;
+    while (p && d*d<=n)
+    	if (n%d==0) p=false;
+    	else if (n%(d+2)==0) p=false;
+    		else d=d+6;
+    return p;
+        
+}
+
+ rozklad na czynniki
+int main()
+{
+	int n,d=2;
+	cout<<"n = "; cin>>n;
+	cout<<n<<" = ";
+	while(d*d<=n)
+		if(n%d==0){
+			cout<<d<<"*";
+			n=n/d;
+		}
+		else d++;
+		
+	cout<<n;
+	return 0;
+}
+
+liczby doskonale pzdr
+using namespace std;
+
+bool doskonala(int n) {
+    int suma = 1; 
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) {
+            suma += i;
+            if (i != n / i) suma += n / i;
+        }
+    }
+    return n > 1 && suma == n;
+}
+
+int main() {
+    int znalezione = 0;
+    int liczba = 2;
+
+    while (znalezione < 4) {
+        if (doskonala(liczba)) {
+            cout << liczba << endl;
+            znalezione++;
+        }
+        liczba++;
+    }
+
+    return 0;
+}
+liczby blizniacze
+bool Pierwsza(int n) {
+
+    int  d=5;
+    bool p=(n>1);
+    if (n>2 && n%2==0) p = false;
+    if (n>3 && n%3==0) p = false;
+    while (p && d*d<=n)
+    	if (n%d==0) p=false;
+    	else if (n%(d+2)==0) p=false;
+    		else d=d+6;
+    return p;
+        
+}
+int main() 
+{
+	int licznik=1, x=5, n;
+	cout<<"Podaj liczbe par: "; cin>>n;
+	cout<<3<<" "<<5<<endl;
+	while (licznik<n)
+	{
+		if (Pierwsza(x) && Pierwsza(x + 2))
+		{
+			cout<<x<<" "<<x+2<<endl;
+			licznik++;
+		}
+		x=x+6;
+	}
+	return 0;
+}
