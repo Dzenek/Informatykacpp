@@ -1,5 +1,4 @@
 #include <iostream>
-
 #include <string>
 
 using namespace std;
@@ -29,6 +28,7 @@ int main()
 		if(suma%2==1) c='1'+c;
 
 		else c='0'+c;
+		prze=suma/2;
 
 	}
 
