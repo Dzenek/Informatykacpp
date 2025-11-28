@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-
+using namespace std;
 string MnozPrzezCfr(int cfr, string liczba, int podst)
 {
 	int i, przn=0, iloczyn;
@@ -13,6 +13,29 @@ string MnozPrzezCfr(int cfr, string liczba, int podst)
 	if (przn>0) wynik=char(przn+'0')+wynik;
 	return wynik;
 }
+string Dodaj(string a, string b, int podst)
+{
+    
+    while (a.size() < b.size()) a = '0' + a;
+    while (b.size() < a.size()) b = '0' + b;
+
+    int przen = 0;
+    string wynik = "";
+
+    for (int i = a.size() - 1; i >= 0; i--)
+    {
+        int s = (a[i] - '0') + (b[i] - '0') + przen;
+        przen = s / podst;
+        wynik = char((s % podst) + '0') + wynik;
+    }
+
+    if (przen > 0) wynik = char(przen + '0') + wynik;
+
+    return wynik;
+}
+
+
+
 int main() 
 {
 	int i, j, d, podstawa;

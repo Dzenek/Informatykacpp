@@ -6,7 +6,7 @@ using namespace std;
 int main() {
 
     int p;      
-    cout << "Podstawa systemu (2–10): ";
+    cout << "Podstawa systemu (2 10): ";
     cin >> p;
 
     if (p < 2 || p > 10) {
