@@ -1,82 +1,70 @@
 #include <iostream>
+
 #include <string>
+
+#include <algorithm>
 
 using namespace std;
 
-int main() {
+string dodaj(string a, string b, int podstawa)
 
-    int p;
-    cout << "Podstawa systemu (2–36): ";
-    cin >> p;
+{
 
-    if (p < 2 || p > 36) {
-        cout << "Nieprawidlowa podstawa!";
-        return 0;
+    while(a.size() < b.size()) a = "0" + a;
+    while(b.size() < a.size()) b = "0" + b;
+    int przen = 0;
+    string wynik = "";
+    for(int i = a.size() - 1; i >= 0; i--)
+
+    {
+
+        char A = a[i];
+        char B = b[i];
+        int cyfra1;
+        int cyfra2;
+        if(A >= '0' && A <= '9') cyfra1 = A - '0';
+        else cyfra1 = A - 'A' + 10;
+        if(B >= '0' && B <= '9') cyfra2 = B - '0';
+        else cyfra2 = B - 'A' + 10;
+        int suma = cyfra1 + cyfra2 + przen;
+        przen = suma / podstawa;
+      	suma = suma % podstawa;
+        char znak;
+        if(suma < 10) znak = suma + '0';
+        else znak = (suma - 10) + 'A';
+        wynik += znak;  
+
     }
 
-    string a, b, c = "";
-    int prze = 0;
+    if(przen > 0)
 
-    cout << "1 liczba: ";
-    cin >> a;
-
-    cout << "2 liczba: ";
-    cin >> b;
-
-
-    for (char &x : a)
-        if (x >= 'a' && x <= 'z')
-            x = x - 'a' + 'A';
-
-    for (char &x : b)
-        if (x >= 'a' && x <= 'z')
-            x = x - 'a' + 'A';
-
-
-    while (a.size() < b.size()) a = '0' + a;
-    while (b.size() < a.size()) b = '0' + b;
-
-    for (int i = a.size() - 1; i >= 0; i--) {
-
-        int da, db;
-
-   
-        if (a[i] >= '0' && a[i] <= '9')
-            da = a[i] - '0';
-        else
-            da = a[i] - 'A' + 10;
-
-  
-        if (b[i] >= '0' && b[i] <= '9')
-            db = b[i] - '0';
-        else
-            db = b[i] - 'A' + 10;
-
-        int suma = da + db + prze;
-
-        int cyfra = suma % p;
-        prze = suma / p;
+    {
 
         char znak;
-        if (cyfra < 10)
-            znak = '0' + cyfra;
-        else
-            znak = 'A' + (cyfra - 10);
+        if(przen < 10) znak = przen + '0';
+        else znak = (przen - 10) + 'A';
+        wynik += znak;
 
-        c = znak + c;
     }
 
-    if (prze > 0) {
-        char znak;
-        if (prze < 10)
-            znak = '0' + prze;
-        else
-            znak = 'A' + (prze - 10);
+    reverse(wynik.begin(), wynik.end());
+    return wynik;
 
-        c = znak + c;
-    }
-
-    cout << "Suma = " << c;
-
-    return 0;
 }
+
+int main()
+
+{
+
+    string a, b;
+    int podstawa;
+    cout << "Podaj pierwsza liczbe: ";
+    cin >> a;
+    cout << "Podaj druga liczbe: ";
+    cin >> b;
+    cout << "Podaj podstawe (2-36): ";
+    cin >> podstawa;
+    cout << "Wynik: " << dodaj(a, b, podstawa) << endl;
+
+}
+ 
