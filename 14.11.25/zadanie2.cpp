@@ -8,6 +8,8 @@ void pole(int a, int b) {
 int main() {
 	int bok1;
 	int bok2;
+	cin>>bok1;
+	cin>>bok2;
     pole(bok1, bok2);
     return 0;
 }

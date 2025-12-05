@@ -8,6 +8,8 @@ int pole(int a, int b) {
 int main() {
 	int bok1;
 	int bok2;
+	cin>>bok1;
+	cin>>bok2;
     int wynik = pole(bok1, bok2);
     cout << "Pole = " << wynik << endl;
     return 0;
