@@ -48,7 +48,7 @@ int nwd3(int a, int b)
 int main()
 
 {
-    int a, b, c, d, d;
+    int a, b, c, d, d, e;
     cout << "liczba a: "; cin >> a;
     cout << "liczba b: "; cin >> b;
     c = nwd1(a, b);
