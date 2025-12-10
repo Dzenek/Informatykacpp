@@ -1,0 +1,191 @@
+
+
+10 NA X
+
+int main() {
+    int d, p, cyfra;
+    string s = "";
+    cout<<"Podaj podstawe systemu"; cin>>p;
+    cout<<"Podaj liczbe dziesietna"; cin>>d;
+    while (d>0)
+    {
+        cyfra=d%p;
+        if (cyfra<10) s = char('0'+cyfra)+s;
+        else s = char('A'-10+cyfra)+s;
+        d=d/p;
+
+    }
+
+    cout<<"liczba w systemie o podstawie " <<p<<": "<<s;
+    return 0;
+
+}
+
+2 NA 10
+int main() {
+    int i, d=0;
+    string b;
+    cout<<"podaj liczbe binarna: "; cin>>b;
+    for (i=0;i<b.size();i++)
+    {
+        d = d*2;
+        if (b[i]=='1') d++;
+        
+    }
+
+    cout<<"liczba dziesietna to: "<<d;
+    return 0;
+}
+
+10 NA 2
+int main() {
+    int d;
+    string b ="";
+    cout<<"podaj liczbe dziesietna: "; cin>>d;
+    while(d > 0) {
+        if (d%2==0) b='0'+b;
+        else b='1'+b;
+        d=d/2;
+    }
+
+    cout<<"liczba binarna to: "<<b;
+    return 0;
+}
+
+CZY LICZBA PIERWSZA
+int main() {
+
+    int n, d=5;
+    bool pierwsza;
+    cout<<"n = "; cin>>n;
+    pierwsza=(n>1);
+    if (n>2 && n%2==0) pierwsza = false;
+    if (n>3 && n%3==0) pierwsza = false;
+    while (pierwsza && (d*d)<=n)
+        if (n%d==0) pierwsza = false;
+        else if (n%(d+2)==0) pierwsza = false;
+            else d=d+6;
+    if (pierwsza) cout<<"Tak";
+    else cout<<"Nie";
+    return 0;
+
+
+}
+DODAWNIE POD KRESKA O ROZNYCH PODSTAWACH
+int main()
+{
+    int i, prze = 0, suma, pod, cyfra1, cyfra2;
+    string a, b, c;
+
+    cout << "1 liczba: "; cin >> a;
+    cout << "2 liczba: "; cin >> b;
+    cout << "podaj podstawe: "; cin >> pod;
+
+    while (a.size() < b.size()) a = '0' + a;
+    while (b.size() < a.size()) b = '0' + b;
+
+    for (i = a.size() - 1; i >= 0; i--)
+    {
+        if (a[i] <= '9') cyfra1 = a[i] - '0';
+        else cyfra1 = a[i] - 'A' + 10;
+
+        if (b[i] <= '9') cyfra2 = b[i] - '0';
+        else cyfra2 = b[i] - 'A' + 10;
+
+        suma = prze + cyfra1 + cyfra2;
+        prze = suma / pod;
+        suma = suma % pod;
+
+        if (suma < 10) c = char(suma + '0') + c;
+        else c = char(suma - 10 + 'A') + c;
+    }
+
+    if (prze > 0)
+    {
+        if (prze < 10) c = char(prze + '0') + c;
+        else c = char(prze - 10 + 'A') + c;
+    }
+
+    cout << "suma = " << c << endl;
+    return 0;
+}
+
+MNOZENIE O ROZNYCH PODSTAWACH
+string MnozPrzezCfr(int cfr, string liczba, int podst)
+{
+	int i, przn=0, iloczyn;
+	string wynik="";
+	for (i=liczba.size()-1;i>=0;i--) {
+		iloczyn=cfr*(liczba[i]-'0')+przn;
+		przn=iloczyn/podst;
+		wynik=char(iloczyn%podst+'0')+wynik;
+	}
+	if (przn>0) wynik=char(przn+'0')+wynik;
+	return wynik;
+}
+string Dodaj(string a, string b, int podst)
+{
+    
+    while (a.size() < b.size()) a = '0' + a;
+    while (b.size() < a.size()) b = '0' + b;
+
+    int przen = 0;
+    string wynik = "";
+
+    for (int i = a.size() - 1; i >= 0; i--)
+    {
+        int s = (a[i] - '0') + (b[i] - '0') + przen;
+        przen = s / podst;
+        wynik = char((s % podst) + '0') + wynik;
+    }
+
+    if (przen > 0) wynik = char(przen + '0') + wynik;
+
+    return wynik;
+}
+
+
+
+int main() 
+{
+	int i, j, d, podstawa;
+	string a, b, c="0", pom;
+	cout<<"Podstawa systemu "; cin>>podstawa;
+	cout<<"Liczba 1: "; cin>>a;
+	cout<<"Liczba 2: "; cin>>b;
+	d=b.size()-1;
+	for (i=d;i>=0;i--)
+	{
+		pom=MnozPrzezCfr(b[i]-'0',a,podstawa);
+		for (j=1;j<=d-i;j++) pom=pom+'0';
+		c=Dodaj(c,pom,podstawa);
+	}
+	cout<<"Iloczyn = "<<c;
+	return 0;
+	
+}
+
+
+NWD 2 SPOSOBY
+int nwd1(int a, int b)
+{
+    while (a != b)
+    {
+        if (a > b)
+            a = a - b;
+        else
+            b = b - a;
+    }
+    return a;
+}
+int nwd3(int a, int b)
+{
+	int pom;
+	while(b!=0)
+	{
+		pom = b;
+		b=a % b;
+		a = pom;
+	}
+	return a;
+}
