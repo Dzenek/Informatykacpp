@@ -25,7 +25,7 @@ string Cezar(string s, int klucz) {
 int main() {
 
     int klucz;
-
+                                                    
     string linia;
     cout << "Podaj klucz (1-25): ";
 
