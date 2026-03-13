@@ -1,0 +1,40 @@
+#include<iostream>
+#include<string>
+#include<fstream>
+#include<cctype>
+using namespace std;
+
+int main()
+{
+    int i, max=0;
+    string napis;
+    char ch;
+    int Licznik[26];
+
+    for(i=0;i<26;i++)
+        Licznik[i]=0;
+
+    ifstream wejscie("dane_zliczanie.txt");
+
+    while(getline(wejscie, napis))
+    {
+        for(i=0;i<napis.size();i++)
+        {
+            ch=toupper(napis[i]);
+            if(ch>='A' && ch<='Z')
+                Licznik[ch-'A']++;
+        }
+    }
+
+    wejscie.close();
+    for(i=0;i<26;i++)
+        if(Licznik[i]>max)
+            max=Licznik[i];
+	cout<<"Najczestsze litery:"<<endl;
+
+    for(i=0;i<26;i++)
+        if(Licznik[i]==max && max>0)
+            cout<<char(i+'A')<<" - "<<Licznik[i]<<endl;
+
+    return 0;
+}
