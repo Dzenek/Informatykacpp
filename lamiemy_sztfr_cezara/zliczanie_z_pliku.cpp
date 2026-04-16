@@ -23,7 +23,7 @@ int main () {
     //Maksimum
     for (i=1; i<26;i++) {
         if (Liczniki[i]>Liczniki[indeks_m]) {
-            indeks_m=1;
+            indeks_m=i;
         }
     }
     cout<<"najczestsza litera = "<<char(indeks_m+'A')<<endl;
